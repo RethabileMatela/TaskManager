@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
 <nav
   className={`w-full flex items-center h-24 fixed top-0 z-20 ${
-    scrolled ? "bg-black" : "bg-black"
+    scrolled ? "bg-[#222222]" : "bg-[#222222]"
   }`} // Add responsive padding
 >
   <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
