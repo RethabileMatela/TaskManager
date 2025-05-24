@@ -4,8 +4,7 @@ import { TiUserDelete } from "react-icons/ti"
 
 const Home = () => {
     return (
-        <div>
-        <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 bg-[#EEEEEE]">
+        <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">
             <Navbar />
             <div className="w-full">
                 <div className="container mx-auto">
@@ -70,8 +69,6 @@ const Home = () => {
             </div>
 
         </div>
-        </div>
-
     )
 }
 
