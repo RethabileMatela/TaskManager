@@ -7,13 +7,18 @@ const Home = () => {
         <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">
             <Navbar />
             <div className="w-full">
+                <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
+                    <span>
+                        Add New User
+                    </span>
+                </button>
                 <div className="container mx-auto">
                     <div className="overflow-x-auto rounded-lg shadow">
                         <table className="w-full text-sm text-left  text-gray-200">
                             {/* HEADER */}
                             <thead className="text-xs uppercase border-b border-[#5CB338] bg-[#222222]">
                                 <tr>
-                                <th scope="col" className="px-6 py-3">Image</th>
+                                    <th scope="col" className="px-6 py-3">Image</th>
 
                                     <th scope="col" className="px-6 py-3">
                                         <button className="flex items-center">
@@ -37,7 +42,7 @@ const Home = () => {
                                     </td>
                                     <td className="px-6 py-4">Abhiraj K</td>
                                     <td className="px-6 py-4">Developer</td>
-                                    <td className="px-6 py-4 text-green-500">View Tasks (6)</td>
+                                    <td className="px-6 py-4 text-green-500">View Tasks (6) </td>
                                     <td className="px-6 py-4 flex items-center space-x-4 gap-3">
                                         <FaUserEdit size={30} color="#0D92F4" />
                                         <TiUserDelete size={30} color="red" />
