@@ -1,16 +1,6 @@
-import express, { Express, Request, Response , Application } from 'express';
-import dotenv from 'dotenv';
+import app from './app';
+import config from './config/config';
 
-//For env File 
-dotenv.config();
-
-const app: Application = express();
-const port = process.env.PORT || 8000;
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to Express & TypeScript Server');
-});
-
-app.listen(port, () => {
-  console.log(`Server is Fire at https://localhost:${port}`);
+app.listen(config.port, () => {
+  console.log(`Server running on port ${config.port}`);
 });
