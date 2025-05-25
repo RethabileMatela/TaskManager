@@ -1,21 +1,50 @@
 import { Request, Response, NextFunction } from 'express';
 import { IUser, users } from '../models/users';
+import { v4 as uuidv4 } from "uuid";
+import SequeliseUser from '../../database/sequeliseUserModel';
 
-// Create an user
+
+// Create a user
+// export const createUser = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const { name, role } = req.body;
+//     const user = await SequeliseUser.create({ name, role });
+//     users.push({ ...user, id: uuidv4()
+//     });
+//     res.status(201).json(user);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+// Create a user
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name } = req.body;
-    const newUser: IUser = {
-      id: Date.now().toString(), 
-      name,
-      role: ''
-    };
-    users.push(newUser);
-    res.status(201).json(newUser);
+    const { name,role } = req.body;
+    SequeliseUser.create({ id: uuidv4(), role, name })
+      .then((newUser) => {
+        res.status(201).json(newUser);
+      })
+      .catch((error) => {
+        next(error);
+      });
   } catch (error) {
     next(error);
   }
 };
+
+
+
+// export async createUser(req: Request, res: Response) {
+//   const id = uuidv4();
+//   try {
+//     const record = await TodoInstance.create({ ...req.body, id });
+//     return res.json({ record, msg: "Successfully create todo" });
+//   } catch (e) {
+//     return res.json({ msg: "fail to create", status: 500, route: "/create" });
+//   }
+// }
+
 
 // Read all users
 export const getUsers = (req: Request, res: Response, next: NextFunction) => {
