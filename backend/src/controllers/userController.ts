@@ -1,6 +1,21 @@
 import { Request, Response, NextFunction } from 'express';
 import { IUser, users } from '../models/user';
 
+
+// app.post('/hello', (req: Request, res: Response) => {
+//   res.send('Hello, World!');
+// });
+
+// Create a hello world endpoint
+export const helloWorld = (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.send('Hello, World!');
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 // Create a user
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
   try {
