@@ -1,12 +1,14 @@
 import { FaUserEdit } from "react-icons/fa"
 import Navbar from "../components/Navbar"
 import { TiUserDelete } from "react-icons/ti"
+import { UserForm } from "./user/UserForm"
 
 const Home = () => {
     return (
         <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">
             <Navbar />
             <div className="w-full">
+                <UserForm onSubmit={() => { }} isSaving={false} isUpdating={false} isDeleting={false} />
                 <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
                     <span>
                         Add New User
@@ -16,7 +18,7 @@ const Home = () => {
                     <div className="overflow-x-auto rounded-lg shadow">
                         <table className="w-full text-sm text-left  text-gray-200">
                             {/* HEADER */}
-                            <thead className="text-xs uppercase border-b border-[#5CB338] bg-[#222222]">
+                            <thead className="text-xs uppercase border-b border-green-500 bg-[#222222]">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">Image</th>
 
@@ -36,7 +38,7 @@ const Home = () => {
                             </thead>
                             {/* BODY */}
                             <tbody>
-                                <tr className="bg-[#222222] border-b  border-[#5CB338]">
+                                <tr className="bg-[#222222] border-b  border-green-500 ">
                                     <td className="px-6 py-4">
                                         <img src="/jane.jpg" alt="Abhiraj" className="w-15 h-15 rounded-full" />
                                     </td>
@@ -48,7 +50,7 @@ const Home = () => {
                                         <TiUserDelete size={30} color="red" />
                                     </td>
                                 </tr>
-                                <tr className="bg-[#222222] border-b border-[#5CB338]">
+                                <tr className="bg-[#222222] border-b border-green-500 ">
                                     <td className="px-6 py-4">
                                         <img src="/john.jpg" alt="John" className="w-15 h-15 rounded-full" />
                                     </td>
