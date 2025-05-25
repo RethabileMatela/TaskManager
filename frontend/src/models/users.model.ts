@@ -1,5 +1,7 @@
 export interface IUserTable {
     id: string;
+    createdAt?: number; // Timestamp
+    updatedAt?: number;
     images: IImage[];    
     name: string;
     role: string;
