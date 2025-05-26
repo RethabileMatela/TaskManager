@@ -45,7 +45,7 @@ export const CreateUser: React.FC = () => {
              <div className="mb-36 space-y-40 p-3">
                 <div className="pt-28">
                     <p
-                        className="text-left text-[#224F34] font-extrabold p-2"
+                        className="text-left text-[#222222] font-extrabold p-2"
                     >
                         New User
                     </p>

@@ -151,7 +151,7 @@ export const UserForm: React.FC<Props> = ({
 
             <div className="flex justify-center items-center gap-4">
                 <button
-                    className="bg-[#222222] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-[#055b05] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
 
                     data-testid="submitBtn"
@@ -166,7 +166,7 @@ export const UserForm: React.FC<Props> = ({
                     }
                 ></button>
                 <button
-                    className="bg-[#055b05] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-[#222222] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="button"
                     onClick={() => {
                         // Navigate to home

@@ -31,7 +31,7 @@ return (
         <div className="pt-28">
           <div className="grid grid-cols-2">
             <p
-              className="text-left text-[#224F34] font-extrabold"
+              className="text-left text-[#222222] font-extrabold"
             >
               Employees: ({users.length})
             </p>
@@ -39,8 +39,8 @@ return (
               <button
                 id="viewBtn"
                 onClick={() => navigate("/user/create")}
-                className=""
-              >ADD NEW</button>
+                className="bg-[#222222] text-white font-bold py-2 px-4 rounded hover:bg-[#454545] transition-colors duration-300"
+              >ADD USER</button>
             </div>
           </div>
           <hr className="h-px pt-1 bg-[#F5D426] border-0"></hr>
