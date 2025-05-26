@@ -14,17 +14,26 @@ export const Users = () => {
   useEffect(() => {
 
     if (isInitialPageLoad) {
-        getUsers();
+      fetchUserData();
       setIsInitialPageLoad(false);
     }
   }, []);
 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-  const getUsers = async () => {
-console.log("get all users");
-
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('http://localhost:9000/api/users');
+      const data: IUserTable[] = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   };
-return (
+
+  return (
     <div className="relative isolate bg-[#f8fafc] min-h-[100vh]">
       <Navbar />
       <div className="mb-36 space-y-40 p-3">

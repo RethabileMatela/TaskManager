@@ -51,6 +51,9 @@ export const UsersTable = ({ users }: Props) => {
                                     image
                                 </th>
                                 <th scope="col" className="px-6 py-3">
+                                    name
+                                </th>
+                                <th scope="col" className="px-6 py-3">
                                     role
                                 </th>
                                 <th scope="col" className="px-6 py-3">
@@ -68,10 +71,10 @@ export const UsersTable = ({ users }: Props) => {
                         </tbody>
                     </table>
                     {/* PAGENATION */}
-                    <div className="flex items-center justify-between p-4 bg-[222222]">
-                        <button className="px-3 py-1  bg-gray-900 rounded">Previous</button>
+                    <div className="flex items-center justify-between p-4 bg-[222222] text-gra">
+                        <button className="px-3 py-1 text-gray-100 bg-gray-900 rounded">Previous</button>
                         <span className="text-sm  text-gray-900">Page 1 of 10</span>
-                        <button className="px-3 py-1  bg-gray-900 rounded">Next</button>
+                        <button className="px-3 py-1 text-gray-100  bg-gray-900 rounded">Next</button>
                     </div>
                     {/* <UserDeleteModal user={selectedUser} showDeleteBtn={true} isLoading={false} /> */}
                 </div>

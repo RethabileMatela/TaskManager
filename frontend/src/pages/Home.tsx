@@ -72,9 +72,9 @@ import { useState, useEffect } from "react";
                                 </tbody>
                             </table>
                             <div className="flex items-center justify-between p-4 bg-[222222]">
-                                <button className="px-3 py-1 bg-gray-900 rounded">Previous</button>
-                                <span className="text-sm text-gray-900">Page 1 of 10</span>
-                                <button className="px-3 py-1 bg-gray-900 rounded">Next</button>
+                                <button className="px-3 py-1 bg-gray-200 rounded">Previous</button>
+                                <span className="text-sm text-gray-200">Page 1 of 10</span>
+                                <button className="px-3 py-1 bg-gray-200 rounded">Next</button>
                             </div>
                         </div>
                     </div>
