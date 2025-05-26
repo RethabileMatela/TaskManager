@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type SetStateAction } from "react";
 import type { IUserTable } from "../../models/users.model";
 import { UserTableRow } from "./UserTableRow";
 
@@ -22,6 +22,7 @@ export const UsersTable = ({ users }: Props) => {
         setSelectedUser(user);
         toggleDeleteModal();
     };
+    const paginate = (pageNumber: SetStateAction<number>) => setCurrentPage(pageNumber);
 
     const closeDeleteModal = () => {
         setSelectedUser(null);
@@ -39,8 +40,8 @@ export const UsersTable = ({ users }: Props) => {
             <div className="mb-4">
                 <input
                     type="text"
-                    placeholder="Search users..."
-                    className="w-full px-4 py-2 text-sm text-gray-900 bg-gray-200 rounded"
+                    placeholder="Search users by name..."
+                    className="w-full px-4 py-2 text-sm text-gray-900 bg-gray-200 rounded focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900"
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
@@ -76,6 +77,22 @@ export const UsersTable = ({ users }: Props) => {
                         ))}
                     </tbody>
                 </table>
+                <div className="pagination">
+          {Array.from(
+            { length: Math.ceil(users.length / itemsPerPage) },
+            (_, index) => (
+              <button
+                key={index + 1}
+                className={`bg-[#222222] text-white font-bold py-2 px-4 rounded hover:bg-[#454545] transition-colors duration-300 m-1 ${
+                  currentPage === index + 1 ? "bg-green-500" : ""
+                }`}
+                onClick={() => paginate(index + 1)}
+              >
+                {index + 1}
+              </button>
+            )
+          )}
+        </div>
             </div>
         </div>
     );
