@@ -6,17 +6,12 @@ import { TiUserDelete } from "react-icons/ti";
 
 type Props = {
     user: IUserTable;
-    closeDetailModal: (close: boolean) => void;
     closeDeleteModal: (close: boolean) => void;
-    openDetailModal: (user: IUserTable) => void;
     openDeleteModal: (user: IUserTable) => void;
 };
 
-export const UserTableRow = ({ user, openDetailModal, openDeleteModal }: Props): JSX.Element => {
+export const UserTableRow = ({ user, openDeleteModal }: Props): JSX.Element => {
     const navigate = useNavigate();
-    const [userData, setUserData] = useState<IUserTable[]>([]);
-
-
 
     return (
 

@@ -10,30 +10,17 @@ interface Props {
 export const UsersTable = ({ users }: Props) => {
     const [selectedUser, setSelectedUser] = useState<IUserTable | null>(null);
 
-    const openDetailModal = (user: IUserTable) => {
-        setSelectedUser(user);
-        toggleDetailModal();
-    };
-
     const openDeleteModal = (user: IUserTable) => {
         setSelectedUser(user);
         toggleDeleteModal();
     };
 
-    const closeDetailModal = () => {
-        setSelectedUser(null);
-    };
-
+ 
 
     const closeDeleteModal = () => {
         setSelectedUser(null);
     };
-    const toggleDetailModal = () => {
-        const modal = document.getElementById("userDetailModal");
-        if (modal) {
-            modal.classList.toggle("hidden");
-        }
-    };
+
 
     const toggleDeleteModal = () => {
         const modal = document.getElementById("userDeleteModal");
@@ -66,7 +53,7 @@ export const UsersTable = ({ users }: Props) => {
                         </thead>
                         <tbody>
                             {users.map((user) => (
-                                <UserTableRow closeDetailModal={closeDetailModal} closeDeleteModal={closeDeleteModal} openDetailModal={openDetailModal} openDeleteModal={openDeleteModal} key={user.id} user={user} />
+                                <UserTableRow closeDeleteModal={closeDeleteModal}  openDeleteModal={openDeleteModal} key={user.id} user={user} />
                             ))}
                         </tbody>
                     </table>
