@@ -20,7 +20,10 @@ export const CreateUser: React.FC = () => {
             await createUserData(
                 'http://localhost:9000/api/users', user.name, user.role
             );
-
+            setSuccessMessage("User added successfully!");
+            setTimeout(() => {
+                window.location.href = "/"; // Navigate to home
+            }, 1000);
         } catch (error) {
             setSuccessMessage("");
             setErrorMessage(

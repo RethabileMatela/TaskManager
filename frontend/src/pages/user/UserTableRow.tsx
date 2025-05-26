@@ -22,7 +22,7 @@ export const UserTableRow = ({ user, openDetailModal, openDeleteModal }: Props):
 
         <tr className="bg-[#222222] border-b border-b-[#414141]">
      
-            <td className="px-6 py-4"><img src="/jane.jpg" alt="Abhiraj" className="w-15 h-15 rounded-full" />  </td>
+            <td className="px-6 py-4"><img src="/av.avif" alt="Abhiraj" className="w-15 h-15 rounded-full" />  </td>
             <td className="px-6 py-4">{user.name}</td>
             <td className="px-6 py-4">{user.role}</td>
             <td 
@@ -31,7 +31,18 @@ export const UserTableRow = ({ user, openDetailModal, openDeleteModal }: Props):
             >
               View Tasks (6)
             </td>
-            <td className="px-6 py-4 flex items-center space-x-4 gap-3"> <FaUserEdit size={30} color="#0D92F4" /><TiUserDelete size={30} color="red" /></td>
+            <td className="px-6 py-4 flex items-center space-x-4 gap-3"> 
+              <FaUserEdit 
+              size={30} 
+              color="#0D92F4" 
+              className="hover:scale-150 cursor-pointer"
+              onClick={() => navigate(`/users/edit/${user.id}`)}
+              />
+              <TiUserDelete 
+              size={30} 
+              color="red" 
+              className="hover:scale-150 cursor-pointer"
+              /></td>
         </tr>
     );
 };
