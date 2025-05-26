@@ -18,12 +18,14 @@ export const UsersTable = ({ users }: Props) => {
     const filteredUsers = users
         .filter(user => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
         .slice(indexOfFirstItem, indexOfLastItem);
+        
+ 
+    const paginate = (pageNumber: SetStateAction<number>) => setCurrentPage(pageNumber);
+
     const openDeleteModal = (user: IUserTable) => {
         setSelectedUser(user);
         toggleDeleteModal();
     };
-    const paginate = (pageNumber: SetStateAction<number>) => setCurrentPage(pageNumber);
-
     const closeDeleteModal = () => {
         setSelectedUser(null);
     };

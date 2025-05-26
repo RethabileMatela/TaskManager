@@ -73,7 +73,7 @@ const Navbar = () => {
           }}
           className={`${
             active === nav.title ? "text-white " : "text-white"
-          } hover:text-[#f51069] sm:md:text-[16px] lg:text-[20px] font-medium cursor-pointer`}
+          } hover:text-green-500 sm:md:text-[16px] lg:text-[20px] font-medium cursor-pointer`}
         >
           <Link to={nav.linkTo || "#"}>{nav.title}</Link>
         </li>
