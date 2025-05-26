@@ -64,6 +64,7 @@ export const UserForm: React.FC<Props> = ({
         setImages(updated);
     };
 
+
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
@@ -133,7 +134,7 @@ export const UserForm: React.FC<Props> = ({
                                     <img
                                         src={img.url}
                                         alt={`Preview ${index}`}
-                                    className="w-24 h-24 object-cover rounded"/>
+                                        className="w-24 h-24 object-cover rounded" />
                                     <button
                                         type="button"
                                         onClick={() => removeImage(index)}
@@ -148,10 +149,11 @@ export const UserForm: React.FC<Props> = ({
                 </div>
             </div>
 
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center gap-4">
                 <button
-                    className="bg-[#222222] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-[#055b05] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
+
                     data-testid="submitBtn"
                     children={
                         isSaving ? (
@@ -162,6 +164,16 @@ export const UserForm: React.FC<Props> = ({
                             "Add User"
                         )
                     }
+                ></button>
+                <button
+                    className="bg-[#222222] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button"
+                    onClick={() => {
+                        // Navigate to home
+                        window.location.href = "/";
+                    }}
+                    data-testid="cancelBtn"
+                    children="Cancel"
                 ></button>
             </div>
         </form>
