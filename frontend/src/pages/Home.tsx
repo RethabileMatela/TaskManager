@@ -34,7 +34,7 @@ const Home = () => {
                             </thead>
                             {/* BODY */}
                             <tbody>
-                                <tr className="bg-[#222222] border-b  border-green-500 ">
+                                <tr className="bg-[#222222] border-b border-b-[#414141] ">
                                     <td className="px-6 py-4">
                                         <img src="/jane.jpg" alt="Abhiraj" className="w-15 h-15 rounded-full" />
                                     </td>
@@ -46,7 +46,7 @@ const Home = () => {
                                         <TiUserDelete size={30} color="red" />
                                     </td>
                                 </tr>
-                                <tr className="bg-[#222222] border-b border-green-500 ">
+                                <tr className="bg-[#222222] border-b border-b-[#414141]">
                                     <td className="px-6 py-4">
                                         <img src="/john.jpg" alt="John" className="w-15 h-15 rounded-full" />
                                     </td>

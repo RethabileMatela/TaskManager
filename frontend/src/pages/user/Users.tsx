@@ -43,7 +43,7 @@ return (
               >ADD USER</button>
             </div>
           </div>
-          <hr className="h-px pt-1 bg-[#F5D426] border-0"></hr>
+          {/* <hr className="h-px pt-1 bg-[#0BC518] border-0"></hr> */}
           {isLoading ? (
             <div className="flex justify-center mt-10">
               <CircleLoader size={100} color="#224F34" />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { IUserTable } from "../../models/users.model";
 import { UserTableRow } from "./UserTableRow";
 
+
 interface Props {
     users: IUserTable[];
 }
@@ -44,19 +45,19 @@ export const UsersTable = ({ users }: Props) => {
     return (
                 <div className="overflow-x-auto rounded-lg shadow">
                     <table className="w-full text-sm text-left  text-gray-200">
-                        <thead className="text-xs uppercase border-b border-green-500 bg-[#222222]">
-                            <tr>
+                        <thead className="text-xs uppercase ">
+                            <tr className="bg-[#222222] border-b border-b-green-500">
                                 <th scope="col" className="px-6 py-3">
-                                    IMAGE
+                                    image
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    ROLE
+                                    role
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    TASKS
+                                    tasks
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    ACTION
+                                    actions
                                 </th>
                             </tr>
                         </thead>

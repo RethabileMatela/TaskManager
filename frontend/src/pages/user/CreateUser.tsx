@@ -49,7 +49,7 @@ export const CreateUser: React.FC = () => {
                     >
                         New User
                     </p>
-                    <hr className="h-px pt-1 bg-[#F5D426] border-0"></hr>
+                    {/* <hr className="h-px pt-1 bg-[#0db519] border-0"></hr> */}
                     {isSaving ? (
                         <div className="flex justify-center mt-10">
                             <CircleLoader size={100} color="#224F34" />
