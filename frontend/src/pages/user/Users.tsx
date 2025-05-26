@@ -40,9 +40,9 @@ export const Users = () => {
         <div className="pt-28">
           <div className="grid grid-cols-2">
             <p
-              className="text-left text-[#222222] font-extrabold"
+              className="text-left text-lg text-[#222222] font-extrabold"
             >
-              Employees: ({users.length})
+              USERS: ({users.length})
             </p>
             <div className="text-right pb-2">
               <button
