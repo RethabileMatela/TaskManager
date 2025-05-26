@@ -47,17 +47,19 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
 
 
 // Update an user
-export const updateUser = (req: Request, res: Response, next: NextFunction) => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const id = parseInt(req.params.id, 10);
-    const { name } = req.body;
-    const userIndex = users.findIndex((i: IUser) => i.id === id.toString());
-    if (userIndex === -1) {
+    const { id } = req.params;
+    const { name, role } = req.body;
+    const user = await SequeliseUser.findOne({ where: { id } });
+    if (!user) {
       res.status(404).json({ message: 'User not found' });
       return;
     }
-    users[userIndex].name = name;
-    res.json(users[userIndex]);
+    user.name = name;
+    user.role = role;
+    await user.save();
+    res.json(user);
   } catch (error) {
     next(error);
   }
