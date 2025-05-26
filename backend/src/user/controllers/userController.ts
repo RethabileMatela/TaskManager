@@ -31,10 +31,10 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 };
 
 // Read single user
-export const getUserById = (req: Request, res: Response, next: NextFunction) => {
+export const getUserById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const user = SequeliseUser.findOne({ where: { id } });
+    const user = await SequeliseUser.findOne({ where: { id } });
     if (!user) {
       res.status(404).json({ message: 'User not found' });
       return;
