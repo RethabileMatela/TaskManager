@@ -30,7 +30,7 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-// Read single user
+// Read a single user
 export const getUserById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
@@ -63,17 +63,17 @@ export const updateUser = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-// Delete an user
-export const deleteUser = (req: Request, res: Response, next: NextFunction) => {
+// Delete a single  user
+export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const id = parseInt(req.params.id, 10);
-    const userIndex = users.findIndex((i) => i.id === id.toString());
-    if (userIndex === -1) {
+    const { id } = req.params;
+    const user = await SequeliseUser.findOne({ where: { id } });
+    if (!user) {
       res.status(404).json({ message: 'User not found' });
       return;
     }
-    const deletedUser = users.splice(userIndex, 1)[0];
-    res.json(deletedUser);
+    await SequeliseUser.destroy({ where: { id } });
+    res.json({ message: 'User deleted successfully', user });
   } catch (error) {
     next(error);
   }
