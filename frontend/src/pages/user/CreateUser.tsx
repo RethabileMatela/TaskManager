@@ -33,9 +33,16 @@ export const CreateUser: React.FC = () => {
     };  
 
     return (
-        <div className="relative isolate bg-[#f8fafc] min-h-[100vh]">
+
+   <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">
             <Navbar />
-            <div className="mb-36 space-y-40 p-3">
+            <div className="w-full mt-28">
+                {/* <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
+                    <span>
+                        Add New User
+                    </span>
+                </button> */}
+             <div className="mb-36 space-y-40 p-3">
                 <div className="pt-28">
                     <p
                         className="text-left text-[#224F34] font-extrabold p-2"
@@ -67,6 +74,7 @@ export const CreateUser: React.FC = () => {
                         </>
                     )}
                 </div>
+            </div>
             </div>
         </div>
     );

@@ -1,21 +1,27 @@
 import { FaUserEdit } from "react-icons/fa"
 import Navbar from "../components/Navbar"
 import { TiUserDelete } from "react-icons/ti"
-import { UserForm } from "./user/UserForm"
+import { UsersTable } from "./user/UsersTable"
+import { Users } from "./user/Users"
 
 const Home = () => {
     return (
         <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">
             <Navbar />
-            <div className="w-full">
-                <UserForm onSubmit={() => { }} isSaving={false} isUpdating={false} isDeleting={false} />
-                <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
+            <div className="mt-96"></div>
+            <div className="w-full mt-28">
+                {/* <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
                     <span>
                         Add New User
                     </span>
-                </button>
+                </button> */}
                 <div className="container mx-auto">
                     <div className="overflow-x-auto rounded-lg shadow">
+                    <Users/>
+
+
+
+
                         <table className="w-full text-sm text-left  text-gray-200">
                             {/* HEADER */}
                             <thead className="text-xs uppercase border-b border-green-500 bg-[#222222]">

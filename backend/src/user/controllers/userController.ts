@@ -46,14 +46,6 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
 };
 
 
-// try {
-//   const { id } = req.params;
-//   const record = await TodoInstance.findOne({ where: { id } });
-//   return res.json(record);
-// } catch (e) {
-//   return res.json({ msg: "fail to read", status: 500, route: "/read/:id" });
-// }
-
 // Update an user
 export const updateUser = (req: Request, res: Response, next: NextFunction) => {
   try {
