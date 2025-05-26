@@ -1,4 +1,4 @@
-
+// CREATE USER
 export const createUserData = async <T>(
     url: string,
     name: string,
@@ -6,7 +6,7 @@ export const createUserData = async <T>(
   )
   : Promise<T> => {
     const res = await fetch(url, {
-      method: 'Post',
+      method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
@@ -16,6 +16,7 @@ export const createUserData = async <T>(
     return await res.json();
   }
   
+  //GET ALL USERS
   export const getAllUserData = async <T>(url: string): Promise<T> => {
     const res = await fetch(url, {
       method: 'GET',
