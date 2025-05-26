@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { CircleLoader } from "react-spinners";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import type { IUserTable } from "../../models/users.model";
 import { UserForm } from "./UserForm";
 import Navbar from "../../components/Navbar";
+import { createUserData } from "../../utils/dataUtils";
 
 export const CreateUser: React.FC = () => {
     const [isSaving, setIsSaving] = useState<boolean>(false);
@@ -13,23 +14,24 @@ export const CreateUser: React.FC = () => {
 
     const handleSubmit = async (user: IUserTable) => {
         setIsSaving(true);
-        const response = await fetch("http://localhost:8000/users", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-        });
-        const data = await response.json();
-        setIsSaving(false);
-        if (response.ok) {
-            setSuccessMessage(data.message);
-            setErrorMessage("");
-        } else {
-            setErrorMessage(data.message);
+        setSuccessMessage("");
+        setErrorMessage("");
+        try {
+
+            // make the API call
+            await createUserData<IUserTable>("/api/users", user.name, user.role);
+            setSuccessMessage("User added successfully!");
+            setIsSaving(false);
+            console.log("user: ", user);
+        } catch (error) {
             setSuccessMessage("");
+            setErrorMessage(
+                "User not added. Please try again or contact support."
+            );
+            setIsSaving(false);
         }
-    };
+    };  
+
     return (
         <div className="relative isolate bg-[#f8fafc] min-h-[100vh]">
             <Navbar />

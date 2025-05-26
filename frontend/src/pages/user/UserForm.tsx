@@ -63,6 +63,7 @@ export const UserForm: React.FC<Props> = ({
         URL.revokeObjectURL(removed[0].url); // Clean up
         setImages(updated);
     };
+ 
 
     return (
         <form

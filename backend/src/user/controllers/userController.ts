@@ -19,10 +19,11 @@ export const createUser = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-
 // Read all users
-export const getUsers = (req: Request, res: Response, next: NextFunction) => {
+export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const users = await SequeliseUser.findAll();
+    console.log("Users fetched:", users);    
     res.json(users);
   } catch (error) {
     next(error);
@@ -32,8 +33,8 @@ export const getUsers = (req: Request, res: Response, next: NextFunction) => {
 // Read single user
 export const getUserById = (req: Request, res: Response, next: NextFunction) => {
   try {
-    const id = parseInt(req.params.id, 10);
-    const user = users.find((i) => i.id === id.toString());
+    const { id } = req.params;
+    const user = SequeliseUser.findOne({ where: { id } });
     if (!user) {
       res.status(404).json({ message: 'User not found' });
       return;
@@ -43,6 +44,15 @@ export const getUserById = (req: Request, res: Response, next: NextFunction) => 
     next(error);
   }
 };
+
+
+// try {
+//   const { id } = req.params;
+//   const record = await TodoInstance.findOne({ where: { id } });
+//   return res.json(record);
+// } catch (e) {
+//   return res.json({ msg: "fail to read", status: 500, route: "/read/:id" });
+// }
 
 // Update an user
 export const updateUser = (req: Request, res: Response, next: NextFunction) => {
