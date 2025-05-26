@@ -10,17 +10,22 @@ interface Props {
 export const UsersTable = ({ users }: Props) => {
     const [selectedUser, setSelectedUser] = useState<IUserTable | null>(null);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredUsers = users
+        .filter(user => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        .slice(indexOfFirstItem, indexOfLastItem);
     const openDeleteModal = (user: IUserTable) => {
         setSelectedUser(user);
         toggleDeleteModal();
     };
 
- 
-
     const closeDeleteModal = () => {
         setSelectedUser(null);
     };
-
 
     const toggleDeleteModal = () => {
         const modal = document.getElementById("userDeleteModal");
@@ -30,40 +35,48 @@ export const UsersTable = ({ users }: Props) => {
     };
 
     return (
-                <div className="overflow-x-auto rounded-lg shadow">
-                    <table className="w-full text-sm text-left  text-gray-200">
-                        <thead className="text-xs uppercase ">
-                            <tr className="bg-[#222222] border-b border-b-green-500">
-                                <th scope="col" className="px-6 py-3">
-                                    image
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    name
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    role
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    tasks
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    actions
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user) => (
-                                <UserTableRow closeDeleteModal={closeDeleteModal}  openDeleteModal={openDeleteModal} key={user.id} user={user} />
-                            ))}
-                        </tbody>
-                    </table>
-                    {/* PAGENATION */}
-                    <div className="flex items-center justify-between p-4 bg-[222222] text-gra">
-                        <button className="px-3 py-1 text-gray-100 bg-gray-900 rounded">Previous</button>
-                        <span className="text-sm  text-gray-900">Page 1 of 10</span>
-                        <button className="px-3 py-1 text-gray-100  bg-gray-900 rounded">Next</button>
-                    </div>
-                    {/* <UserDeleteModal user={selectedUser} showDeleteBtn={true} isLoading={false} /> */}
-                </div>
+        <div>
+            <div className="mb-4">
+                <input
+                    type="text"
+                    placeholder="Search users..."
+                    className="w-full px-4 py-2 text-sm text-gray-900 bg-gray-200 rounded"
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
+            <div className="overflow-x-auto rounded-lg shadow">
+                <table className="w-full text-sm text-left text-gray-200">
+                    <thead className="text-xs uppercase">
+                        <tr className="bg-[#222222] border-b border-b-green-500">
+                            <th scope="col" className="px-6 py-3">
+                                image
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                name
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                role
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                tasks
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredUsers.map((user: IUserTable) => (
+                            <UserTableRow
+                                closeDeleteModal={closeDeleteModal}
+                                openDeleteModal={openDeleteModal}
+                                key={user.id}
+                                user={user}
+                            />
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 };
