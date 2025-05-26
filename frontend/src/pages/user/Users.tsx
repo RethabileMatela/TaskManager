@@ -14,26 +14,35 @@ export const Users = () => {
   useEffect(() => {
 
     if (isInitialPageLoad) {
-        getUsers();
+      fetchUserData();
       setIsInitialPageLoad(false);
     }
   }, []);
 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-  const getUsers = async () => {
-console.log("get all users");
-
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('http://localhost:9000/api/users');
+      const data: IUserTable[] = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   };
-return (
+
+  return (
     <div className="relative isolate bg-[#f8fafc] min-h-[100vh]">
       <Navbar />
       <div className="mb-36 space-y-40 p-3">
         <div className="pt-28">
           <div className="grid grid-cols-2">
             <p
-              className="text-left text-[#222222] font-extrabold"
+              className="text-left text-lg text-[#222222] font-extrabold"
             >
-              Employees: ({users.length})
+              USERS: ({users.length})
             </p>
             <div className="text-right pb-2">
               <button
@@ -43,7 +52,7 @@ return (
               >ADD USER</button>
             </div>
           </div>
-          <hr className="h-px pt-1 bg-[#F5D426] border-0"></hr>
+          {/* <hr className="h-px pt-1 bg-[#0BC518] border-0"></hr> */}
           {isLoading ? (
             <div className="flex justify-center mt-10">
               <CircleLoader size={100} color="#224F34" />
