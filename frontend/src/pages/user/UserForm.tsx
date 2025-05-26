@@ -66,6 +66,8 @@ export const UserForm: React.FC<Props> = ({
 
 
     return (
+        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-200">
+            
         <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-4 bg-white p-4 rounded shadow"
@@ -177,5 +179,6 @@ export const UserForm: React.FC<Props> = ({
                 ></button>
             </div>
         </form>
+        </div>
     );
 };

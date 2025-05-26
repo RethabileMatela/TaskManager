@@ -17,17 +17,7 @@ export const UserEdit: React.FC = () => {
 
     useEffect(() => {
         if (isInitialPageLoad) {
-            // GOOGLE ANALYTICS
-            //   if (nodeEnv === NODE_ENV.PRODUCTION) {
-            //     ReactGA.send({
-            //       hitType: "pageview",
-            //       page: "/medical-files/:id",
-            //       title: "Medical File Page",
-            //     });
-            //   }
-
             getCurrentUser();
-
             setIsInitialPageLoad(false);
         }
     }, []);
@@ -89,7 +79,7 @@ export const UserEdit: React.FC = () => {
     };
 
     return (
-        <div className="relative isolate bg-[#f8fafc] min-h-[100vh]">
+        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-200">
             <Navbar />
             <div className="mb-36 space-y-40 p-3">
                 <div className="pt-28">

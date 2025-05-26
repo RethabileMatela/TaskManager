@@ -38,9 +38,9 @@ import { useState, useEffect } from "react";
                 <div className="w-full mt-20">
                     <div className="container mx-auto">
                         <div className="overflow-x-auto rounded-lg shadow">
-                            <p className="text-black font-bold">
+                            <div className="text-black font-bold">
                                 <Users />
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ export const UserTableRow = ({ user, openDeleteModal }: Props): JSX.Element => {
             <td className="px-6 py-4">{user.role}</td>
             <td 
               className="px-6 py-4 text-green-500 cursor-pointer hover:scale-105" 
-              onClick={() => navigate("/user/tasks", { state: { userId: user.id } })}
+              onClick={() => navigate(`/users/${user.id}/tasks`)}
             >
               View Tasks (6)
             </td>
@@ -31,7 +31,7 @@ export const UserTableRow = ({ user, openDeleteModal }: Props): JSX.Element => {
               size={30} 
               color="#0D92F4" 
               className="hover:scale-150 cursor-pointer"
-              onClick={() => navigate(`/users/edit/${user.id}`)}
+              onClick={() => navigate(`/users/${user.id}/edit`)}
               />
               <TiUserDelete 
               size={30} 
