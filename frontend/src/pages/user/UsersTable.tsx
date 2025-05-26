@@ -1,8 +1,6 @@
 import { useState } from "react";
 import type { IUserTable } from "../../models/users.model";
 import { UserTableRow } from "./UserTableRow";
-import { TiUserDelete } from "react-icons/ti";
-import { FaUserEdit } from "react-icons/fa";
 
 interface Props {
     users: IUserTable[];

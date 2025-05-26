@@ -1,7 +1,6 @@
 import { FaUserEdit } from "react-icons/fa"
 import Navbar from "../components/Navbar"
 import { TiUserDelete } from "react-icons/ti"
-import { UsersTable } from "./user/UsersTable"
 import { Users } from "./user/Users"
 
 const Home = () => {
@@ -10,24 +9,15 @@ const Home = () => {
             <Navbar />
             <div className="mt-96"></div>
             <div className="w-full mt-28">
-                {/* <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
-                    <span>
-                        Add New User
-                    </span>
-                </button> */}
                 <div className="container mx-auto">
                     <div className="overflow-x-auto rounded-lg shadow">
-                    <Users/>
-
-
-
-
+                        {/* USERS TABLE */}
+                        <Users />
                         <table className="w-full text-sm text-left  text-gray-200">
                             {/* HEADER */}
                             <thead className="text-xs uppercase border-b border-green-500 bg-[#222222]">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">Image</th>
-
                                     <th scope="col" className="px-6 py-3">
                                         <button className="flex items-center">
                                             Name
