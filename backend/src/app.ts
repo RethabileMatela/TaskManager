@@ -16,8 +16,8 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use(function (req: Request, res: Response, next: NextFunction) {
-   res.setHeader("content-security-policy-report-only", "default-src 'self'; script-src 'self' 'report-sample'; style-src 'self' 'report-sample'; base-uri 'none'; object-src 'none'; report-uri https://5e52f4c893efcda6a7d40460.endpoint.csper.io");
+app.use(function (_: Request, res: Response, next: NextFunction) {
+   res.setHeader('Content-Security-Policy', "font-src 'self' data:; img-src 'self' data:; default-src 'self'");
    next();
 });
  
