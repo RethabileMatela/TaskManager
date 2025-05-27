@@ -6,7 +6,6 @@ import { errorHandler } from './middlewares/errorHandler';
 import userRoutes from './user/routes/userRoutes';
 // @ts-ignore
 import cors from 'cors';
-import { expressCspHeader, SELF, INLINE, NONE } from 'express-csp-header';
 
 import { Request, Response, NextFunction } from 'express';
 
