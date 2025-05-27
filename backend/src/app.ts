@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(function(req, res, next) {
-   res.setHeader("Content-Security-Policy", "font-src'none'");
+   res.setHeader("Content-Security-Policy", "object-src 'none'");
    return next();
 });
 app.use('/api/users', userRoutes);
