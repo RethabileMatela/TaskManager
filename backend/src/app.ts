@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(function (_: Request, res: Response, next: NextFunction) {
-   res.setHeader('Content-Security-Policy', "font-src 'self' data:; img-src 'self' data:; default-src 'self'");
+   res.setHeader('Content-Security-Policy', "font-src 'none' data:;");
    next();
 });
  
