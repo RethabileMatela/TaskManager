@@ -1,6 +1,8 @@
+// @ts-ignore
 import express from 'express';
 import { errorHandler } from './middlewares/errorHandler';
 import userRoutes from './user/routes/userRoutes';
+// @ts-ignore
 import cors from 'cors';
 
 const app = express();
