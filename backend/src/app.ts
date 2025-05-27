@@ -7,7 +7,6 @@ import userRoutes from './user/routes/userRoutes';
 // @ts-ignore
 import cors from 'cors';
 
-import { Request, Response, NextFunction } from 'express';
 
 const app = express();
 
@@ -15,10 +14,6 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use(function (_: Request, res: Response, next: NextFunction) {
-   res.setHeader('Content-Security-Policy', "font-src 'self' data:;");
-   next();
-});
  
 app.use('/api/users', userRoutes);
 
