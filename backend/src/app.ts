@@ -19,7 +19,7 @@ app.use('/api/users', userRoutes);
 
 app.use(function (req, res, next) {
    res.setHeader(
-     'Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; frame-src 'self'"
+     'Content-Security-Policy', "default-src 'none'; script-src 'none'; style-src 'none'; font-src 'none'; img-src 'none'; frame-src 'none'"
    );
    
    next();
