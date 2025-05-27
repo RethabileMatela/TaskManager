@@ -1,5 +1,6 @@
 // @ts-ignore
 import express from 'express';
+// @ts-ignore
 import { errorHandler } from './middlewares/errorHandler';
 import userRoutes from './user/routes/userRoutes';
 // @ts-ignore
