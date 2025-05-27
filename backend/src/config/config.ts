@@ -9,7 +9,7 @@ interface Config {
 
 const config: Config = {
   port: Number(process.env.PORT) || 9000,
-  nodeEnv: process.env.NODE_ENV || 'development',
+  nodeEnv: "production",
 };
 
 export default config;
