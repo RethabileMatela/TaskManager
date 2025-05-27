@@ -1,4 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
+// @ts-ignore
+import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 
 export interface AppError extends Error {
   status?: number;
@@ -6,9 +7,9 @@ export interface AppError extends Error {
 
 export const errorHandler = (
   err: AppError,
-  _req: Request,
+  req: Request,
   res: Response,
-  _next: NextFunction
+  next: NextFunction
 ) => {
   console.error(err);
   res.status(err.status || 500).json({
