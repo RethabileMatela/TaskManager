@@ -22,10 +22,7 @@ const corsOptions ={
 app.use('/api/users', userRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-   res.setHeader(
-     'Content-Security-Policy',
-     "default-src 'self'; font-src 'self' data: https://fonts.gstatic.com"
-   );
+   res.set("Content-Security-Policy", "default-src 'none'");
    next();
 });
 
