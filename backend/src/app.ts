@@ -16,16 +16,10 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use(expressCspHeader({
-   directives: {
-       'default-src': [NONE],
-       'script-src': [NONE, INLINE, 'somehost.com'],
-       'style-src': [NONE, 'mystyles.net'],
-       'img-src': ['data:', 'images.com'],
-       'worker-src': [NONE],
-       'block-all-mixed-content': true
-   }
-}));
+app.use(function(req, res, next) {
+   res.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
+   return next();
+});
 app.use('/api/users', userRoutes);
 
 // Global error handler (should be after routes)
