@@ -5,6 +5,7 @@ import SequeliseUser from '../../database/sequeliseUserModel';
 
 // Create a user
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
+  res.set("Content-Security-Policy", "default-src 'none'");
   try {
     const { name,role } = req.body;
     SequeliseUser.create({ id: uuidv4(), role, name })
@@ -21,6 +22,7 @@ export const createUser = (req: Request, res: Response, next: NextFunction) => {
 
 // Read all users
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
+  res.set("Content-Security-Policy", "default-src 'none'");
   try {
     const users = await SequeliseUser.findAll();
     console.log("Users fetched:", users);    
@@ -32,6 +34,7 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 
 // Read a single user
 export const getUserById = async (req: Request, res: Response, next: NextFunction) => {
+  res.set("Content-Security-Policy", "default-src 'none'");
   try {
     const { id } = req.params;
     const user = await SequeliseUser.findOne({ where: { id } });
@@ -48,6 +51,7 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
 
 // Update a user
 export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+  res.set("Content-Security-Policy", "default-src 'none'");
   try {
     const { id } = req.params;
     const { name, role } = req.body;
@@ -67,6 +71,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
 // Delete a single  user
 export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+  res.set("Content-Security-Policy", "default-src 'none'");
   try {
     const { id } = req.params;
     const user = await SequeliseUser.findOne({ where: { id } });
