@@ -19,12 +19,10 @@ app.use('/api/users', userRoutes);
 
 app.use(function (req, res, next) {
    res.setHeader(
-      'Content-Security-Policy-Report-Only',
-      "default-src 'none'"
+     'Content-Security-Policy-Report-Only', "default-src 'none';"
    );
    next();
-});
-
+ });
 
 // Global error handler (should be after routes)
 app.use(errorHandler);
