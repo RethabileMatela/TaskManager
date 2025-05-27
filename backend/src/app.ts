@@ -7,6 +7,8 @@ import userRoutes from './user/routes/userRoutes';
 // @ts-ignore
 import cors from 'cors';
 
+import { Request, Response, NextFunction } from 'express';
+
 const app = express();
 
 app.use(express.json());
@@ -17,11 +19,20 @@ const corsOptions ={
    optionSuccessStatus:200,
 }
 
-app.use(cors(corsOptions))
+app.use('/api/users', userRoutes);
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+   res.setHeader(
+     'Content-Security-Policy',
+     "default-src 'self'; font-src 'self' data: https://fonts.gstatic.com"
+   );
+   next();
+});
+
 
 
 // Routes
-app.use('/api/users', userRoutes);
+// app.use('/api/users', userRoutes);
 
 // Global error handler (should be after routes)
 app.use(errorHandler);
