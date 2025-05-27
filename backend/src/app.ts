@@ -1,8 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import express from 'express';
 import { errorHandler } from './middlewares/errorHandler';
 import userRoutes from './user/routes/userRoutes';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import cors from 'cors';
 
 const app = express();
