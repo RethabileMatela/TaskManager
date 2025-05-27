@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Router } from "express";
 import { getUserById, getAllUsers, updateUser, createUser, deleteUser } from "../controllers/userController";
 

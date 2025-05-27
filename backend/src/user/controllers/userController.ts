@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Request, Response, NextFunction } from 'express';
 import { IUser, users } from '../models/users';
 import { v4 as uuidv4 } from "uuid";
@@ -79,4 +80,4 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
   } catch (error) {
     next(error);
   }
-};
+}
