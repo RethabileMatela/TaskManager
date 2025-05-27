@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(function(req, res, next) {
-   res.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
+   res.setHeader("Content-Security-Policy", "font-src'none'");
    return next();
 });
 app.use('/api/users', userRoutes);
