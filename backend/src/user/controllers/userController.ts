@@ -6,8 +6,16 @@ import SequeliseUser from '../../database/sequeliseUserModel';
 
 // Create a user
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
+  const csp = {
+    directives: {
+        defaultSrc: ["'self'"], // Allow resources from the same origin
+        fontSrc: ["'self'", "fonts.googleapis.com"], // Allow fonts from Google Fonts
+        // ... other directives as needed ...
+    }
+};
+res.setHeader('Content-Security-Policy', Object.entries(csp.directives).map(([directive, sources]) => `${directive} ${sources.join(' ')}`).join('; '));
   try {
-    const { name,role } = req.body;
+    const { name, role } = req.body;
     SequeliseUser.create({ id: uuidv4(), role, name })
       .then((newUser) => {
         res.status(201).json(newUser);
@@ -22,9 +30,17 @@ export const createUser = (req: Request, res: Response, next: NextFunction) => {
 
 // Read all users
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
+  const csp = {
+    directives: {
+      defaultSrc: ["'self'"], // Allow resources from the same origin
+      fontSrc: ["'self'", "fonts.googleapis.com"], // Allow fonts from Google Fonts
+      // ... other directives as needed ...
+    }
+  };
+  res.setHeader('Content-Security-Policy', Object.entries(csp.directives).map(([directive, sources]) => `${directive} ${sources.join(' ')}`).join('; '));
   try {
     const users = await SequeliseUser.findAll();
-    console.log("Users fetched:", users);    
+    console.log("Users fetched:", users);
     res.json(users);
   } catch (error) {
     next(error);
@@ -33,6 +49,14 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 
 // Read a single user
 export const getUserById = async (req: Request, res: Response, next: NextFunction) => {
+  const csp = {
+    directives: {
+        defaultSrc: ["'self'"], // Allow resources from the same origin
+        fontSrc: ["'self'", "fonts.googleapis.com"], // Allow fonts from Google Fonts
+        // ... other directives as needed ...
+    }
+};
+res.setHeader('Content-Security-Policy', Object.entries(csp.directives).map(([directive, sources]) => `${directive} ${sources.join(' ')}`).join('; '));
   try {
     const { id } = req.params;
     const user = await SequeliseUser.findOne({ where: { id } });
@@ -49,6 +73,14 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
 
 // Update a user
 export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+  const csp = {
+    directives: {
+        defaultSrc: ["'self'"], // Allow resources from the same origin
+        fontSrc: ["'self'", "fonts.googleapis.com"], // Allow fonts from Google Fonts
+        // ... other directives as needed ...
+    }
+};
+res.setHeader('Content-Security-Policy', Object.entries(csp.directives).map(([directive, sources]) => `${directive} ${sources.join(' ')}`).join('; '));
   try {
     const { id } = req.params;
     const { name, role } = req.body;
@@ -68,6 +100,14 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
 // Delete a single  user
 export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+  const csp = {
+    directives: {
+        defaultSrc: ["'self'"], // Allow resources from the same origin
+        fontSrc: ["'self'", "fonts.googleapis.com"], // Allow fonts from Google Fonts
+        // ... other directives as needed ...
+    }
+};
+res.setHeader('Content-Security-Policy', Object.entries(csp.directives).map(([directive, sources]) => `${directive} ${sources.join(' ')}`).join('; '));
   try {
     const { id } = req.params;
     const user = await SequeliseUser.findOne({ where: { id } });
