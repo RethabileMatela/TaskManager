@@ -2,6 +2,7 @@
 import express from 'express';
 // @ts-ignore
 import { errorHandler } from './middlewares/errorHandler';
+// @ts-ignore
 import userRoutes from './user/routes/userRoutes';
 // @ts-ignore
 import cors from 'cors';
