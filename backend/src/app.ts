@@ -25,6 +25,6 @@ app.use('/api/users', userRoutes);
 
 // Global error handler (should be after routes)
 app.use(errorHandler);
-app.use(express.static('dist'));
+app.use(express.static('./dist'));
 
 export default app;
