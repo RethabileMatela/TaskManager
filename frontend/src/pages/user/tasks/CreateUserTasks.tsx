@@ -4,7 +4,7 @@ import type { IUserTable, IUserTasks } from "../../../models/users.model";
 import Navbar from "../../../components/Navbar";
 import { UserTasksForm } from "./UserTasksForm";
 import { createTaskData, getUserById } from "../../../utils/dataUtils";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import { v4 as uuidv4 } from "uuid";
 
 export const CreateUserTasks: React.FC = () => {
@@ -16,6 +16,7 @@ export const CreateUserTasks: React.FC = () => {
     const [isUpdating, setIsUpdating] = useState<boolean>(false);
     const [isInitialPageLoad, setIsInitialPageLoad] = useState<boolean>(true);
     const [user, setUser] = useState<IUserTable>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isInitialPageLoad) {
@@ -63,11 +64,14 @@ export const CreateUserTasks: React.FC = () => {
             );
             setIsSaving(false);
             setSuccessMessage("Task created successfully!");
+            setTimeout(() => {
+                navigate(`/users/${id}/tasks`);
+            }, 100); // Optional delay for showing success message
         } catch (error) {
             setIsSaving(false);
             setErrorMessage("Error creating task.");
+        }
     };
-    }
     return (
 
         <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">

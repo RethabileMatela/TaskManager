@@ -28,8 +28,7 @@ export const UserTasksForm: React.FC<Props> = ({
     });
 
     return (
-        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-900">
-            
+        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-900">     
         <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-4 border  p-4 rounded shadow"
@@ -77,13 +76,12 @@ export const UserTasksForm: React.FC<Props> = ({
                 <button
                     className="bg-[#055b05] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
-
                     data-testid="submitBtn"
                     children={
                         isSaving ? (
                             <CircleLoader size={30} color="white" />
                         ) : initialData ? (
-                            "Update Task"
+                            ""
                         ) : (
                             "Add Task"
                         )
