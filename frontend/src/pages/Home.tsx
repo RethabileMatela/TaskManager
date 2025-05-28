@@ -18,7 +18,7 @@ import { useState, useEffect } from "react";
 
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://localhost:9000/api/users');
+                const response = await fetch('https://taskmanagerbackend-o0ay.onrender.com/api/users');
                 const data: IUserTable[] = await response.json();
                 setUserData(data);
             } catch (error) {

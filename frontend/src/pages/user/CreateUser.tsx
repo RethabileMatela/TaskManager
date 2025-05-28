@@ -16,7 +16,7 @@ export const CreateUser: React.FC = () => {
         setErrorMessage("");
         try {
             await createUserData(
-                'http://localhost:9000/api/users', user.name, user.role
+                'https://taskmanagerbackend-o0ay.onrender.com/api/users', user.name, user.role
             );
             setSuccessMessage("User added successfully!");
             setTimeout(() => {
