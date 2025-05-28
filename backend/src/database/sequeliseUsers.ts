@@ -1,9 +1,20 @@
 import { Sequelize } from 'sequelize';
+import { OPEN_READWRITE } from 'sqlite3';
+import fs from 'fs';
 
-const sequelizeDatabase = new Sequelize({
+const databasePath = './users.db';
+
+if (!fs.existsSync(databasePath)) {
+    fs.writeFileSync(databasePath, ''); // Create an empty database file if it doesn't exist
+}
+
+const sequelizeUsersDatabase = new Sequelize({
   dialect: 'sqlite',
   storage: './users.db', // Specify the database file
+  dialectOptions: {
+    mode: OPEN_READWRITE, // Open the database in read-write mode
+  },
   logging: false,
 });
 
-export default sequelizeDatabase;
+export default sequelizeUsersDatabase;

@@ -2,11 +2,13 @@ import { Request, Response, NextFunction } from 'express';
 import { IUser, users } from '../models/users';
 import { v4 as uuidv4 } from "uuid";
 import SequeliseUser from '../../database/sequeliseUserModel';
+import SequeliseTask from '../../database/sequeliseTaskModel';
+import { json } from 'sequelize';
 
 // Create a user
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name,role } = req.body;
+    const { name, role } = req.body;
     SequeliseUser.create({ id: uuidv4(), role, name })
       .then((newUser) => {
         res.status(201).json(newUser);
@@ -23,7 +25,7 @@ export const createUser = (req: Request, res: Response, next: NextFunction) => {
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const users = await SequeliseUser.findAll();
-    console.log("Users fetched:", users);    
+    console.log("Users fetched:", users);
     res.json(users);
   } catch (error) {
     next(error);
@@ -76,6 +78,55 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
     }
     await SequeliseUser.destroy({ where: { id } });
     res.json({ message: 'User deleted successfully', user });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// TASKS
+// Create a task where userId is extracted from the URL and equals to the createdById
+// export const createTask = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const { title, description } = req.body;
+//     const { userId } = req.params; // Extracting userId from the URL
+
+
+//     const newTask = await SequeliseTask.create({
+//       taskId: uuidv4(),
+//       createdById: userId,
+//       title,
+//       description,
+//       userId,
+//     });
+
+//     res.status(201).json(newTask);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+
+export const createTask = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { title, description } = req.body;
+    const userId  = req.params.id; // Extracting userId from the URL
+    if (!userId || userId.trim() === '') {
+      res.status(400).json({ message: 'UserId is required in the URL' });
+      return;
+    }
+    const userExists = await SequeliseUser.findOne({ where: { id: userId } });
+    if (!userExists) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+    const newTask = await SequeliseTask.create({
+      taskId: uuidv4(),
+      createdById: userId, // Assign userId as createdById
+      title,
+      description,
+    });
+
+    res.status(201).json(newTask);
   } catch (error) {
     next(error);
   }

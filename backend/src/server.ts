@@ -1,12 +1,17 @@
 import app from './app';
 import config from './config/config';
-import sequelizeDatabase from './database/sequeliseUsers';
+import sequelizeTasksDatabase from './database/sequeliseTasks';
+import sequelizeUsersDatabase from './database/sequeliseUsers';
 
 
-sequelizeDatabase.sync().then(() => {
-	console.log("connect to db");
+
+sequelizeUsersDatabase.sync().then(() => {
+	console.log("connect to users table");
 });
 
+sequelizeTasksDatabase.sync().then(() => {
+	console.log("connect to tasks table");
+});
 
 app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
