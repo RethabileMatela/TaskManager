@@ -59,7 +59,7 @@ export const UsersTable = ({ users }: Props) => {
                         ))}
                     </tbody>
                 </table>
-                <div className="pagination">
+                <div className="pagination flex justify-center">
           {Array.from(
             { length: Math.ceil(users.length / itemsPerPage) },
             (_, index) => (
