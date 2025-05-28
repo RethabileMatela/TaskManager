@@ -14,3 +14,8 @@ export interface IUserTable {
     file: any; // type of JS file
   }
   
+  export interface IUserTasks{
+    id: string;
+    title: string;
+    description: string;
+  }

@@ -4,6 +4,7 @@ import Error from "./pages/error/Error";
 import Home from "./pages/Home";
 import { UserEdit } from "./pages/user/UserEdit";
 import UserTasks from "./pages/user/tasks/UserTasks";
+import { Tasks } from "./pages/user/tasks/Tasks";
 
 export const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/users/:id/tasks",
-        element: <UserTasks />,
+        element: <Tasks/>,
         errorElement: <Error />,
     },
 ]);
