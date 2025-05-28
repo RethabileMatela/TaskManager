@@ -8,7 +8,7 @@ import { UsersTable } from "./UsersTable";
 export const Users = () => {
   const [users, setUsers] = useState<IUserTable[]>([]);
   const [isInitialPageLoad, setIsInitialPageLoad] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -8,8 +8,6 @@ interface Props {
 }
 
 export const UsersTable = ({ users }: Props) => {
-    const [selectedUser, setSelectedUser] = useState<IUserTable | null>(null);
-
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -18,24 +16,8 @@ export const UsersTable = ({ users }: Props) => {
     const filteredUsers = users
         .filter(user => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
         .slice(indexOfFirstItem, indexOfLastItem);
-        
  
     const paginate = (pageNumber: SetStateAction<number>) => setCurrentPage(pageNumber);
-
-    const openDeleteModal = (user: IUserTable) => {
-        setSelectedUser(user);
-        toggleDeleteModal();
-    };
-    const closeDeleteModal = () => {
-        setSelectedUser(null);
-    };
-
-    const toggleDeleteModal = () => {
-        const modal = document.getElementById("userDeleteModal");
-        if (modal) {
-            modal.classList.toggle("hidden");
-        }
-    };
 
     return (
         <div>
@@ -71,8 +53,6 @@ export const UsersTable = ({ users }: Props) => {
                     <tbody>
                         {filteredUsers.map((user: IUserTable) => (
                             <UserTableRow
-                                closeDeleteModal={closeDeleteModal}
-                                openDeleteModal={openDeleteModal}
                                 key={user.id}
                                 user={user}
                             />

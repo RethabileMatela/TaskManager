@@ -10,8 +10,6 @@ export const CreateUser: React.FC = () => {
     const [isSaving, setIsSaving] = useState<boolean>(false);
     const [successMessage, setSuccessMessage] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const [progressPercent, setProgressPercent] = useState<number>(0);
-
     const handleSubmit = async (user: IUserTable) => {
         setIsSaving(true);
         setSuccessMessage("");

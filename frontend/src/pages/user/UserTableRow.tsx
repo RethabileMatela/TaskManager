@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import type { IUserTable } from "../../models/users.model";
-import { useEffect, useState, type JSX } from "react";
 import { TiUserDelete } from "react-icons/ti";
+import type { JSX } from "react";
 
 type Props = {
     user: IUserTable;
-    closeDeleteModal: (close: boolean) => void;
-    openDeleteModal: (user: IUserTable) => void;
-};
+  };
 
-export const UserTableRow = ({ user, openDeleteModal }: Props): JSX.Element => {
+export const UserTableRow = ({ user }: Props): JSX.Element => {
     const navigate = useNavigate();
 
     return (

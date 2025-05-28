@@ -1,6 +1,4 @@
-import { FaUserEdit } from "react-icons/fa"
 import Navbar from "../components/Navbar"
-import { TiUserDelete } from "react-icons/ti"
 import { Users } from "./user/Users"
 import { useState, useEffect } from "react";
 
@@ -16,7 +14,7 @@ import { useState, useEffect } from "react";
     }
 
     const Home = () => {
-        const [userData, setUserData] = useState<IUserTable[]>([]);
+        const [,setUserData] = useState<IUserTable[]>([]);
 
         const fetchUserData = async () => {
             try {
