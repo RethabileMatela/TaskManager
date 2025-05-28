@@ -16,6 +16,7 @@ export interface IUserTable {
   
   export interface IUserTasks{
     id: string;
+    createdById: string;
     title: string;
     description: string;
   }

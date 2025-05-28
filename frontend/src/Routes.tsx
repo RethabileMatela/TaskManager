@@ -3,8 +3,8 @@ import { CreateUser } from "./pages/user/CreateUser";
 import Error from "./pages/error/Error";
 import Home from "./pages/Home";
 import { UserEdit } from "./pages/user/UserEdit";
-import UserTasks from "./pages/user/tasks/UserTasks";
 import { Tasks } from "./pages/user/tasks/Tasks";
+import { CreateUserTasks } from "./pages/user/tasks/CreateUserTasks";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +15,11 @@ export const router = createBrowserRouter([
     {
         path: "/user/create",
         element: <CreateUser />,
+        errorElement: <Error />,
+    },
+    {
+        path: "/task/:id/create",
+        element: <CreateUserTasks />,
         errorElement: <Error />,
     },
     {

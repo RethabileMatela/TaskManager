@@ -58,3 +58,27 @@ export const updateUserData = async <T>(
     });
     return await res.json();
   };
+
+// CREATE TASK BY USER ID
+export const createTaskData = async <T>(
+  url: string,
+  userId: string,
+  title: string,
+  description: string
+  ): Promise<T> => {
+  try {
+    const res = await fetch(`${url}${userId}/tasks`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({ title, description })
+    });
+    if (!res.ok) {
+      throw new Error(`Error creating task for user ${userId}: ${res.statusText}`);
+    }
+    return await res.json();
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CircleLoader } from "react-spinners";
 import type { IUserTasks } from "../../../models/users.model";
 import Navbar from "../../../components/Navbar";
@@ -10,6 +10,7 @@ import UserTasks from "./UserTasks";
   const [isInitialPageLoad, setIsInitialPageLoad] = useState<boolean>(true);
   const [isLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
 
@@ -45,11 +46,13 @@ import UserTasks from "./UserTasks";
               Tasks: ({tasks.length})
             </p>
             <div className="text-right pb-2">
-              <button
+                <button
                 id="viewBtn"
-                onClick={() => navigate("/user/create")}
+                onClick={() => navigate(`/task/${id}/create`)}
                 className="bg-[#222222] text-white font-bold py-2 px-4 rounded hover:bg-[#454545] transition-colors duration-300"
-              >ADD TASK</button>
+                >
+                ADD TASK
+                </button>
             </div>
           </div>
           {/* <hr className="h-px pt-1 bg-[#0BC518] border-0"></hr> */}
