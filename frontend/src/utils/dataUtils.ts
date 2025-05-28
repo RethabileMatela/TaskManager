@@ -49,7 +49,7 @@ export const updateUserData = async <T>(
     name: string,
     role: string
   ): Promise<T> => {
-    const res = await fetch(`${url}/${id}`, {
+    const res = await fetch(`${url}${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'

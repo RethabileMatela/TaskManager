@@ -16,7 +16,7 @@ export const UsersTable = ({ users }: Props) => {
     const filteredUsers = users
         .filter(user => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
         .slice(indexOfFirstItem, indexOfLastItem);
- 
+
     const paginate = (pageNumber: SetStateAction<number>) => setCurrentPage(pageNumber);
 
     return (
@@ -60,21 +60,20 @@ export const UsersTable = ({ users }: Props) => {
                     </tbody>
                 </table>
                 <div className="pagination flex justify-center">
-          {Array.from(
-            { length: Math.ceil(users.length / itemsPerPage) },
-            (_, index) => (
-              <button
-                key={index + 1}
-                className={`bg-[#222222] text-white font-bold py-2 px-4 rounded hover:bg-[#454545] transition-colors duration-300 m-1 ${
-                  currentPage === index + 1 ? "bg-green-500" : ""
-                }`}
-                onClick={() => paginate(index + 1)}
-              >
-                {index + 1}
-              </button>
-            )
-          )}
-        </div>
+                    {Array.from(
+                        { length: Math.ceil(users.length / itemsPerPage) },
+                        (_, index) => (
+                            <button
+                                key={index + 1}
+                                className={`bg-[#222222] text-white font-bold py-2 px-4 rounded hover:bg-[#454545] transition-colors duration-300 m-1 ${currentPage === index + 1 ? "bg-green-500" : ""
+                                    }`}
+                                onClick={() => paginate(index + 1)}
+                            >
+                                {index + 1}
+                            </button>
+                        )
+                    )}
+                </div>
             </div>
         </div>
     );
