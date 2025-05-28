@@ -66,11 +66,11 @@ export const UserForm: React.FC<Props> = ({
 
 
     return (
-        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-200">
+        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-900">
             
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-4 bg-white p-4 rounded shadow"
+            className="space-y-4 border border-1 p-4 rounded shadow"
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {/* NAME */}
@@ -107,46 +107,6 @@ export const UserForm: React.FC<Props> = ({
                     />
                     {errors.role && (
                         <p className="text-red-500 text-sm pt-1">{errors.role.message}</p>
-                    )}
-                </div>
-                {/* IMAGES */}
-                <div className="mb-3">
-                    <label
-                        className="block text-gray-900 text-sm font-bold mb-2"
-                        htmlFor="images"
-                        data-testid={"images"}
-                    >
-                        Image:
-                    </label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        onChange={handleImageChange}
-                        className="w-full h-12 rounded-lg border border-stroke bg-transparent py-3 pl-6 pr-10 outline-none border-[#222222] focus:border-green-500 focus:border-2"
-                    />
-
-                    {images.length > 0 && (
-                        <div className="space-y-2">
-                            {images.map((img, index) => (
-                                <div
-                                    key={index}
-                                    className="flex items-center gap-4 border p-2 rounded"
-                                >
-                                    <img
-                                        src={img.url}
-                                        alt={`Preview ${index}`}
-                                        className="w-24 h-24 object-cover rounded" />
-                                    <button
-                                        type="button"
-                                        onClick={() => removeImage(index)}
-                                        className="text-red-600 hover:underline"
-                                    >
-                                        Remove
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
                     )}
                 </div>
             </div>
