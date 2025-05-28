@@ -39,9 +39,9 @@ import UserTasks from "./UserTasks";
   };
 
   return (
-    <div className="relative isolate bg-[#f8fafc] min-h-[100vh]">
+    <div className="relative isolate bg-[#f8fafc] min-h-[100vh] ">
       <Navbar />
-      <div className="mb-36 space-y-40 p-3">
+      <div className="mb-36 space-y-40 p-3 px-20">
         <div className="pt-28">
           <div className="grid grid-cols-2">
             <p
