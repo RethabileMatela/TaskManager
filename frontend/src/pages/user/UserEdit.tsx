@@ -33,7 +33,7 @@ export const UserEdit: React.FC = () => {
             if (id && id.length > 0) {                
                 const currentUser: IUserTable =
                     await getUserById(
-                        "https://taskmanagerbackend-o0ay.onrender.com/api/users",
+                        "http://localhost:9000/api/users/",
                         id
                     );
                 if (!currentUser) {
@@ -58,7 +58,7 @@ export const UserEdit: React.FC = () => {
             user.updatedAt = new Date().getTime();
 
             await updateUserData(
-                "https://taskmanagerbackend-o0ay.onrender.com/api/users",
+                "http://localhost:9000/api/users/",
                 user.id,
                 user.name,
                 user.role
