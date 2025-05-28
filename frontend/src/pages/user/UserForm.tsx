@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { CircleLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
-import type { IImage, IUserTable } from "../../models/users.model";
+import type { IUserTable } from "../../models/users.model";
 
 interface Props {
     onSubmit: (user: IUserTable) => void; // When form is submitted
@@ -20,7 +19,6 @@ export const UserForm: React.FC<Props> = ({
         register,
         handleSubmit,
         formState: { errors },
-        setValue,
     } = useForm<IUserTable>({
         defaultValues: initialData || {
             id: "",
@@ -29,48 +27,13 @@ export const UserForm: React.FC<Props> = ({
             role: "",
         },
     });
-    const [images, setImages] = useState<IImage[]>([]);
-
-    // Clean up previews on unmount
-    useEffect(() => {
-        return () => {
-            images.forEach((img) => URL.revokeObjectURL(img.url));
-        };
-    }, [images]);
-
-
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files) return;
-
-        const files = Array.from(e.target.files);
-
-        // Revoke previous previews to avoid memory leaks
-        images.forEach((img) => URL.revokeObjectURL(img.url));
-
-        const newImages: IImage[] = files.map((file) => ({
-            file,
-            url: URL.createObjectURL(file),
-        }));
-
-        setImages(newImages); // Replace old images
-        // ✅ Manually update 'images' in form state
-        setValue("images", newImages, { shouldValidate: true });
-    };
-
-    const removeImage = (index: number) => {
-        const updated = [...images];
-        const removed = updated.splice(index, 1);
-        URL.revokeObjectURL(removed[0].url); // Clean up
-        setImages(updated);
-    };
-
 
     return (
         <div className="w-full h-screen flex flex-col items-center justify-center text-gray-900">
             
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-4 border border-1 p-4 rounded shadow"
+            className="space-y-4 border  p-4 rounded shadow"
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {/* NAME */}

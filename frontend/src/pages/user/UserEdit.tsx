@@ -79,7 +79,7 @@ export const UserEdit: React.FC = () => {
     };
 
     return (
-        <div className="w-full h-screen flex flex-col items-center justify-center text-gray-200">
+        <div className="w-full h-screen flex flex-col items-center justify-center">
             <Navbar />
             <div className="mb-36 space-y-40 p-3">
                 <div className="pt-28">

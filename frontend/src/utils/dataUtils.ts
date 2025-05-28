@@ -30,7 +30,7 @@ export const createUserData = async <T>(
 
 // GET USER BY ID
 export const getUserById = async <T>(url: string, id: string): Promise<T> => {
-  const res = await fetch(`${url}/${id}`, {
+  const res = await fetch(`${url}${id}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json'
