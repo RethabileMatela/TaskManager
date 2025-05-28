@@ -82,3 +82,17 @@ export const createTaskData = async <T>(
     throw error;
   }
 };
+
+//GET ALL TASK WHERE CREATED BY ID EQUALS USER ID
+export const getAllTasksByUserId = async <T>(url: string, userId: string): Promise<T> => {
+  const res = await fetch(`${url}${userId}/tasks`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+  if (!res.ok) {
+    throw new Error(`Error fetching tasks for user ${userId}: ${res.statusText}`);
+  }
+  return await res.json();
+};

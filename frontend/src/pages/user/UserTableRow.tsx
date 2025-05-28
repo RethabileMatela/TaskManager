@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import type { IUserTable } from "../../models/users.model";
-import { TiUserDelete } from "react-icons/ti";
+// import { TiUserDelete } from "react-icons/ti";
 import type { JSX } from "react";
 
 type Props = {
@@ -22,7 +22,7 @@ export const UserTableRow = ({ user }: Props): JSX.Element => {
               className="px-6 py-4 text-green-500 cursor-pointer hover:scale-105" 
               onClick={() => navigate(`/users/${user.id}/tasks`)}
             >
-              View Tasks (6)
+              View Tasks
             </td>
             <td className="px-6 py-4 flex items-center space-x-4 gap-3"> 
               <FaUserEdit 
@@ -31,11 +31,12 @@ export const UserTableRow = ({ user }: Props): JSX.Element => {
               className="hover:scale-150 cursor-pointer"
               onClick={() => navigate(`/users/${user.id}/edit`)}
               />
-              <TiUserDelete 
+              {/* <TiUserDelete 
               size={30} 
               color="red" 
               className="hover:scale-150 cursor-pointer"
-              /></td>
+              /> */}
+              </td>
         </tr>
     );
 };

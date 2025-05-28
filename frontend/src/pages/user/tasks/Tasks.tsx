@@ -15,18 +15,22 @@ import UserTasks from "./UserTasks";
   useEffect(() => {
 
     if (isInitialPageLoad) {
-      fetchUserData();
+      getAllTasksByUserId();
       setIsInitialPageLoad(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchUserData();
+    getAllTasksByUserId();
   }, []);
 
-  const fetchUserData = async () => {
+  const getAllTasksByUserId = async () => {
     try {
-      const response = await fetch('http://localhost:9000/api/users/');
+      if (!id) {
+        console.error("User ID is missing");
+        return;
+      }
+      const response = await fetch(`http://localhost:9000/api/users/${id}/tasks`);
       const data: IUserTasks[] = await response.json();
       setTasks(data);
     } catch (error) {

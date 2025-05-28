@@ -83,29 +83,8 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-// TASKS
-// Create a task where userId is extracted from the URL and equals to the createdById
-// export const createTask = async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     const { title, description } = req.body;
-//     const { userId } = req.params; // Extracting userId from the URL
 
-
-//     const newTask = await SequeliseTask.create({
-//       taskId: uuidv4(),
-//       createdById: userId,
-//       title,
-//       description,
-//       userId,
-//     });
-
-//     res.status(201).json(newTask);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-
+// Create a task for user by user id
 export const createTask = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { title, description } = req.body;
@@ -127,6 +106,17 @@ export const createTask = async (req: Request, res: Response, next: NextFunction
     });
 
     res.status(201).json(newTask);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get all tasks for where createdById = userId
+export const getAllTasksByUserId = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const userId = req.params.id;
+    const tasks = await SequeliseTask.findAll({ where: { createdById: userId } });
+    res.json(tasks);
   } catch (error) {
     next(error);
   }
