@@ -57,7 +57,7 @@ const Navbar = () => {
       }}
     >
       <div className="flex-shrink-0  ml-8 flex items-center ">
-        <span className="text-3xl font-bold text-white ">Done</span>
+        <span className="text-3xl font-bold text-white hover:text-green-500 ">Done</span>
         &nbsp;
         <AiOutlineFileDone size={40} color="#0BC518" />
       </div>
