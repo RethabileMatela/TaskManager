@@ -10,12 +10,13 @@ const databasePath = './users.db';
 if (!fs_1.default.existsSync(databasePath)) {
     fs_1.default.writeFileSync(databasePath, ''); // Create an empty database file if it doesn't exist
 }
-const sequelizeUsersDatabase = new sequelize_1.Sequelize({
+const sequelizeTasksDatabase = new sequelize_1.Sequelize({
     dialect: 'sqlite',
-    storage: './users.db', // Specify the database file
+    storage: databasePath, // Specify the database file
     dialectOptions: {
         mode: sqlite3_1.OPEN_READWRITE, // Open the database in read-write mode
     },
     logging: false,
 });
-exports.default = sequelizeUsersDatabase;
+sequelizeTasksDatabase.sync(); // Synchronize the database
+exports.default = sequelizeTasksDatabase;
