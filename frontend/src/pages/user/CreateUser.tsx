@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { CircleLoader } from "react-spinners";
-// import { v4 as uuidv4 } from "uuid";
 import type { IUserTable } from "../../models/users.model";
 import { UserForm } from "./UserForm";
 import Navbar from "../../components/Navbar";
@@ -32,15 +31,9 @@ export const CreateUser: React.FC = () => {
     };
 
     return (
-
         <div className="w-full h-screen flex flex-col items-center justify-center  text-gray-200 ">
             <Navbar />
             <div className="w-full mt-28">
-                {/* <button className=" text-gray-900 border border-[#222222] py-2 px-6 gap-2 rounded inline-flex items-center m-3">
-                    <span>
-                        Add New User
-                    </span>
-                </button> */}
                 <div className="mb-36 space-y-40 p-3">
                     <div className="pt-28">
                         <p
@@ -48,7 +41,6 @@ export const CreateUser: React.FC = () => {
                         >
                             New User
                         </p>
-                        {/* <hr className="h-px pt-1 bg-[#0db519] border-0"></hr> */}
                         {isSaving ? (
                             <div className="flex justify-center mt-10">
                                 <CircleLoader size={100} color="#224F34" />

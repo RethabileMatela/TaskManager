@@ -22,15 +22,12 @@ export const UserEdit: React.FC = () => {
         }
     }, []);
 
-    /**
-     * Gets user by ID from url path
-     */
     const getCurrentUser = async () => {
         console.log("currentUser function called");
 
         setIsLoading(true);
         try {
-            if (id && id.length > 0) {                
+            if (id && id.length > 0) {
                 const currentUser: IUserTable =
                     await getUserById(
                         "http://localhost:9000/api/users/",
@@ -56,14 +53,12 @@ export const UserEdit: React.FC = () => {
         setErrorMessage("");
         try {
             user.updatedAt = new Date().getTime();
-
             await updateUserData(
                 "http://localhost:9000/api/users/",
                 user.id,
                 user.name,
                 user.role
             );
-
             console.log("user: ", user);
             setSuccessMessage("User updated successfully.");
             setTimeout(() => {
