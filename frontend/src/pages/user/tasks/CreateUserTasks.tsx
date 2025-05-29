@@ -24,7 +24,6 @@ export const CreateUserTasks: React.FC = () => {
     }, []);
 
     const getCurrentUser = async () => {
-        console.log("currentUser function called IN CREATE TASKS");
         setIsLoading(true);
         try {
             if (id && id.length > 0) {

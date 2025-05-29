@@ -25,7 +25,6 @@ export const createUser = (req: Request, res: Response, next: NextFunction) => {
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const users = await SequeliseUser.findAll();
-    console.log("Users fetched:", users);
     res.json(users);
   } catch (error) {
     next(error);
