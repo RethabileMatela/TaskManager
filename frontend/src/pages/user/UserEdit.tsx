@@ -23,8 +23,6 @@ export const UserEdit: React.FC = () => {
     }, []);
 
     const getCurrentUser = async () => {
-        console.log("currentUser function called");
-
         setIsLoading(true);
         try {
             if (id && id.length > 0) {
@@ -59,7 +57,6 @@ export const UserEdit: React.FC = () => {
                 user.name,
                 user.role
             );
-            console.log("user: ", user);
             setSuccessMessage("User updated successfully.");
             setTimeout(() => {
                 window.location.href = "/";
