@@ -5,17 +5,15 @@ import Navbar from "../../../components/Navbar";
 import { UserTasksForm } from "./UserTasksForm";
 import { createTaskData, getUserById } from "../../../utils/dataUtils";
 import { useNavigate, useParams } from "react-router-dom";
-// import { v4 as uuidv4 } from "uuid";
 
 export const CreateUserTasks: React.FC = () => {
     const [isSaving, setIsSaving] = useState<boolean>(false);
     const [successMessage, setSuccessMessage] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string>("");
     const { id } = useParams<{ id: string }>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
+    const [, setIsLoading] = useState<boolean>(false);
     const [isInitialPageLoad, setIsInitialPageLoad] = useState<boolean>(true);
-    const [user, setUser] = useState<IUserTable>();
+    const [, setUser] = useState<IUserTable>();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,12 +23,8 @@ export const CreateUserTasks: React.FC = () => {
         }
     }, []);
 
-    /**
-        * Gets user by ID from url path
-        */
     const getCurrentUser = async () => {
         console.log("currentUser function called IN CREATE TASKS");
-
         setIsLoading(true);
         try {
             if (id && id.length > 0) {
@@ -44,7 +38,6 @@ export const CreateUserTasks: React.FC = () => {
                     setIsLoading(false);
                     return;
                 }
-
                 setUser(currentUser);
             }
             setIsLoading(false);
@@ -84,7 +77,6 @@ export const CreateUserTasks: React.FC = () => {
                         >
                             New Task
                         </p>
-                        {/* <hr className="h-px pt-1 bg-[#0db519] border-0"></hr> */}
                         {isSaving ? (
                             <div className="flex justify-center mt-10">
                                 <CircleLoader size={100} color="#224F34" />

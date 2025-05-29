@@ -2,7 +2,6 @@ import { useState, type SetStateAction } from "react";
 import type { IUserTable } from "../../models/users.model";
 import { UserTableRow } from "./UserTableRow";
 
-
 interface Props {
     users: IUserTable[];
 }

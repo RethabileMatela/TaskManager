@@ -13,7 +13,6 @@ import UserTasks from "./UserTasks";
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-
     if (isInitialPageLoad) {
       getAllTasksByUserId();
       setIsInitialPageLoad(false);
