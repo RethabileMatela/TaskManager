@@ -1,10 +1,6 @@
 import Navbar from "../components/Navbar"
-import { Tasks } from "./user/tasks/Tasks";
 import { Users } from "./user/Users"
 import { useState, useEffect } from "react";
-
-
-
 
 interface IUserTable {
     id: number;
@@ -16,7 +12,6 @@ interface IUserTable {
 
 const Home = () => {
     const [, setUserData] = useState<IUserTable[]>([]);
-
     const fetchUserData = async () => {
         try {
             const response = await fetch('http://localhost:9000/api/users/');
@@ -46,7 +41,5 @@ const Home = () => {
         </div>
     );
 };
-
-
 
 export default Home
